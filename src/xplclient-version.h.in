@@ -1,0 +1,34 @@
+/*
+ * Copyright © 2016 Michael Heimpold <mhei@heimpold.de>
+ *
+ * SPDX-License-Identifier: LGPL-2.1+
+ */
+
+#ifndef XPLCLIENT_VERSION_H
+#define XPLCLIENT_VERSION_H
+
+/* The major version, (1, if %LIBXPLCLIENT_VERSION is 1.2.3) */
+#define LIBXPLCLIENT_VERSION_MAJOR (@LIBXPLCLIENT_VERSION_MAJOR@)
+
+/* The minor version (2, if %LIBXPLCLIENT_VERSION is 1.2.3) */
+#define LIBXPLCLIENT_VERSION_MINOR (@LIBXPLCLIENT_VERSION_MINOR@)
+
+/* The micro version (3, if %LIBXPLCLIENT_VERSION is 1.2.3) */
+#define LIBXPLCLIENT_VERSION_MICRO (@LIBXPLCLIENT_VERSION_MICRO@)
+
+/* The full version, like 1.2.3 */
+#define LIBXPLCLIENT_VERSION        @LIBXPLCLIENT_VERSION@
+
+/* The full version, in string form (suited for string concatenation) */
+#define LIBXPLCLIENT_VERSION_STRING "@LIBXPLCLIENT_VERSION@"
+
+/* Evaluates to True if the version is greater than @major, @minor and @micro */
+#define LIBXPLCLIENT_VERSION_CHECK(major,minor,micro)      \
+    (LIBXPLCLIENT_VERSION_MAJOR > (major) ||               \
+     (LIBXPLCLIENT_VERSION_MAJOR == (major) &&             \
+      LIBXPLCLIENT_VERSION_MINOR > (minor)) ||             \
+     (LIBXPLCLIENT_VERSION_MAJOR == (major) &&             \
+      LIBXPLCLIENT_VERSION_MINOR == (minor) &&             \
+      LIBXPLCLIENT_VERSION_MICRO >= (micro)))
+
+#endif /* XPLCLIENT_VERSION_H_ */

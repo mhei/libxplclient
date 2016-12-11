@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: @PACKAGE@
+Description: @PACKAGE_DESCRIPTION@
+Version: @PACKAGE_VERSION@
+Requires: json-c
+Libs: -L${libdir} -lxplclient
+Libs.private:
+Cflags: -I${includedir}/libxplclient
