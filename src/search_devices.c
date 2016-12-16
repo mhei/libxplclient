@@ -141,8 +141,8 @@ static char *trim(char *str)
 
 static int recv_packet(int s, xplclient_search_devices_cb cb, void *cb_ctx)
 {
-	struct sockaddr_in addr;
-	socklen_t addrlen;
+	struct sockaddr_storage addr;
+	socklen_t addrlen = sizeof(addr);
 	char buffer[1024];
 	ssize_t len;
 	char *body, *http_ct_len, *endptr;
