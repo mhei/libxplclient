@@ -1,5 +1,5 @@
 /*
- * Copyright © 2016 Michael Heimpold <mhei@heimpold.de>
+ * Copyright © 2016-2017 Michael Heimpold <mhei@heimpold.de>
  *
  * SPDX-License-Identifier: GPL-3.0
  */
@@ -124,7 +124,7 @@ int options_parse_cli(int argc, char * argv[])
 
 #define PRETTY_FORMAT "%-16s %-10s %-17s %-10s %s\n"
 
-int print_device(void *ctx, const struct sockaddr *address, struct json_object *deviceinfo)
+int print_device(void *ctx, const struct sockaddr *address, socklen_t addrlen, struct json_object *deviceinfo)
 {
 	struct sockaddr_in *addr = (struct sockaddr_in *)address;
 	struct json_object *serial = NULL, *mac = NULL, *product = NULL, *sw_version = NULL;

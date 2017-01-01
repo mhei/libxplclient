@@ -1,5 +1,5 @@
 /*
- * Copyright © 2016 Michael Heimpold <mhei@heimpold.de>
+ * Copyright © 2016-2017 Michael Heimpold <mhei@heimpold.de>
  *
  * SPDX-License-Identifier: LGPL-2.1
  */
@@ -19,11 +19,12 @@
  *
  * @param ctx        Context parameter passed to xplclient_search_devices.
  * @param address    Address of the XPL device which responded.
+ * @param addrlen    This argument specifies the size of address.
  * @param deviceinfo Pointer to the root JSON object of the NOTIFY response. Callee is responsible to
  *                   free the object!
  * @return Return value is ignored at the moment, however, return 0 on sucess, -1 on error.
  */
-typedef int (*xplclient_search_devices_cb)(void *ctx, const struct sockaddr *address, struct json_object *deviceinfo);
+typedef int (*xplclient_search_devices_cb)(void *ctx, const struct sockaddr *address, socklen_t addrlen, struct json_object *deviceinfo);
 
 /**
  * Search for XPL devices in local network(s).

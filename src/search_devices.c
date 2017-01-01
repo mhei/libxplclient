@@ -1,5 +1,5 @@
 /*
- * Copyright © 2016 Michael Heimpold <mhei@heimpold.de>
+ * Copyright © 2016-2017 Michael Heimpold <mhei@heimpold.de>
  *
  * SPDX-License-Identifier: LGPL-2.1
  */
@@ -203,7 +203,7 @@ static int recv_packet(int s, xplclient_search_devices_cb cb, void *cb_ctx)
 	json_tokener_free(tok);
 
 	if (cb) {
-		cb(cb_ctx, (struct sockaddr *)&addr, root);
+		cb(cb_ctx, (struct sockaddr *)&addr, addrlen, root);
 	} else {
 		json_object_put(root);
 	}
