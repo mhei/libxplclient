@@ -44,9 +44,21 @@ typedef int (*xplclient_search_devices_cb)(void *ctx, const struct sockaddr *add
 int xplclient_search_devices(xplclient_search_devices_cb cb, void *cb_ctx, const char *interface, const char *mc_address, unsigned int port, int timeout);
 
 /**
- * FIXME
+ * Search for a XPL device with given serial number in local network(s).
+ *
+ * This is a convinience function which calls xplclient_search_devices with default values.
+ * The given serial number is trimmed for the comparison, i.e. leading/trailing whitespace and leading zeros are ignored.
+ * Usually, only one device with a given serial number should exists at all, thus only the first device's first address
+ * (in case the device has multiple ones) is returned due to the limited interface. However, this should be sufficient
+ * for most use-cases.
+ *
+ * @param serial     The serial number of the desired target device.
+ * @param addr       Pointer to a pointer which will receive the address of the target device (if found).
+ *                   This will be malloc-ed, callee is responsible for to free it after use.
+ * @param addrlen    Pointer to a socklen_t variable which will receive the length of the address (if target is found).
+ * @return The count of matching devices (i.e. zero if no one was found at all), -1 with errno set on error.
  */
-int xplclient_addr_by_serial(const char *serial, struct sockaddr **address, socklen_t *addrlen);
+int xplclient_search_by_serial(const char *serial, struct sockaddr **addr, socklen_t *addrlen);
 
 /**
  * Assumes that the XPL device with the given serial number is a serial device.

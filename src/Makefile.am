@@ -15,6 +15,7 @@ AM_CPPFLAGS = \
 
 libxplclient_la_SOURCES = \
 	search_devices.c \
+	search_by_serial.c \
 	stringify.h \
 	xplclient.h \
 	xplclient-version.h
