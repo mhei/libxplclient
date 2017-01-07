@@ -15,7 +15,6 @@ install-sh
 libtool
 ltmain.sh
 missing
-m4/
 libxplclient.pc
 xplclient-version.h
 .deps
