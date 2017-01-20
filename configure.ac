@@ -55,7 +55,7 @@ LT_INIT([disable-static])
 AC_HEADER_STDC
 
 PKG_CHECK_MODULES([JSONC], [json-c],, [AC_MSG_WARN("json-c not found")])
-if test "JSONC_LIBS" = ""; then
+if test "$JSONC_LIBS" = ""; then
     PKG_CHECK_MODULES([JSONC], [json],, [AC_MSG_ERROR("no JSON library available")])
 fi
 
