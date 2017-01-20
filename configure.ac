@@ -54,7 +54,11 @@ LT_INIT([disable-static])
 # Checks for header files
 AC_HEADER_STDC
 
-PKG_CHECK_MODULES([JSONC], [json-c])
+PKG_CHECK_MODULES([JSONC], [json-c], [AC_MSG_WARN("json-c not found")])
+if test "JSONC_LIBS" = ""; then
+    PKG_CHECK_MODULES([JSONC], [json], [AC_MSG_ERROR("no JSON library available")])
+fi
+
 PKG_CHECK_MODULES([CURL], [libcurl])
 
 AC_CONFIG_MACRO_DIR([m4])
