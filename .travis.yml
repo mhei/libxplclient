@@ -2,6 +2,8 @@ addons:
   apt:
     packages:
     - libtool
+    - pkg-config
+    - libcurl4-openssl-dev
 
 language: c
 
