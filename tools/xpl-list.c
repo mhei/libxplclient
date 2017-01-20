@@ -11,7 +11,7 @@
 #include <getopt.h>
 #include <arpa/inet.h>
 
-#include <json-c/json.h>
+#include <json.h>
 
 #include "stringify.h"
 #include "xplclient.h"
