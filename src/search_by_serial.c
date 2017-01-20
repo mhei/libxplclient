@@ -11,7 +11,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#include <json-c/json.h>
+#include <json.h>
 
 #include "xplclient.h"
 

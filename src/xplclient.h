@@ -7,7 +7,7 @@
 #define XPLCLIENT_H
 
 #include <sys/socket.h>
-#include <json-c/json.h>
+#include <json.h>
 
 #include "xplclient-version.h"
 
