@@ -221,7 +221,7 @@ int xplclient_search_devices(xplclient_search_devices_cb cb, void *cb_ctx, const
 
 	/* prepare timer data */
 	memset(&its, 0, sizeof(its));
-	its.it_value.tv_sec = (timeout > 0) ? : 3;
+	its.it_value.tv_sec = (timeout > 0) ? timeout : 3;
 
 	/* prepare destination address */
 	mc_addr.s_addr = inet_addr(mc_address ? : XPLCLIENT_DEFAULT_MC_GROUP);
