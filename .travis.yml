@@ -4,7 +4,7 @@ addons:
     - libtool
     - pkg-config
     - libcurl4-openssl-dev
-    - libjson-c-dev
+    - libjson0-dev
 
 language: c
 
