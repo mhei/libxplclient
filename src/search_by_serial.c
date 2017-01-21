@@ -44,7 +44,11 @@ static int sbs_cb(void *ctx, const struct sockaddr *address, socklen_t addrlen, 
 	struct sbs_ctx *sbs_ctx = (struct sbs_ctx *)ctx;
 	struct json_object *serial = NULL;
 
+#if JSON_C_MINOR_VERSION > 10
 	json_object_object_get_ex(deviceinfo, "serial", &serial);
+#else
+	serial = json_object_object_get(deviceinfo, "serial");
+#endif
 
 	if (serial) {
 		char *json_serial = strdup(json_object_get_string(serial));

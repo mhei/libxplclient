@@ -195,7 +195,11 @@ static int recv_packet(int s, xplclient_search_devices_cb cb, void *cb_ctx)
 		return -1;
 
 	root = json_tokener_parse_ex(tok, body, ct_len);
+#if JSON_C_MINOR_VERSION > 10
 	if (json_tokener_get_error(tok) != json_tokener_success) {
+#else
+	if (!root) {
+#endif
 		json_tokener_free(tok);
 		return -1;
 	}

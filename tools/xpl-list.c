@@ -129,10 +129,17 @@ int print_device(void *ctx, const struct sockaddr *address, socklen_t addrlen, s
 	struct sockaddr_in *addr = (struct sockaddr_in *)address;
 	struct json_object *serial = NULL, *mac = NULL, *product = NULL, *sw_version = NULL;
 
+#if JSON_C_MINOR_VERSION > 10
 	json_object_object_get_ex(deviceinfo, "serial", &serial);
 	json_object_object_get_ex(deviceinfo, "mac_address", &mac);
 	json_object_object_get_ex(deviceinfo, "product", &product);
 	json_object_object_get_ex(deviceinfo, "software_version", &sw_version);
+#else
+	serial = json_object_object_get(deviceinfo, "serial");
+	mac = json_object_object_get(deviceinfo, "mac_address");
+	product = json_object_object_get(deviceinfo, "product");
+	sw_version = json_object_object_get(deviceinfo, "software_version");
+#endif
 
 	printf(csv_output ? "%s;%s;%s;%s;%s\n" : PRETTY_FORMAT, inet_ntoa(addr->sin_addr),
 	       serial ? json_object_get_string(serial) : "-",
