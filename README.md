@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mhei/libxplclient.svg?branch=master)](https://travis-ci.org/mhei/libxplclient)
+
 Overview
 --------
 
