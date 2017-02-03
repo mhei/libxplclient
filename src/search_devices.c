@@ -86,8 +86,7 @@ static int send_query(int s, const struct in_addr * const dst_addr, unsigned int
 	rv = 0;
 
 err_out:
-	if (httpmu_req)
-		free(httpmu_req);
+	free(httpmu_req);
 
 	return rv;
 }
