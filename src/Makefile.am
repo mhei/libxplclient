@@ -16,13 +16,18 @@ AM_CPPFLAGS = \
 libxplclient_la_SOURCES = \
 	search_devices.c \
 	search_by_serial.c \
+	global_init.c \
+	new_free.c \
+	url.c \
+	json_object_get_by_key.c \
+	socket_by_serial.c \
 	stringify.h \
 	xplclient.h \
 	xplclient-version.h
 
-libxplclient_la_CFLAGS = $(JSONC_CFLAGS)
+libxplclient_la_CFLAGS = $(JSONC_CFLAGS) $(CURL_CFLAGS)
 
-libxplclient_la_LDFLAGS = $(JSONC_LIBS) -no-undefined \
+libxplclient_la_LDFLAGS = $(JSONC_LIBS) $(CURL_LIBS) -no-undefined \
 	-version-info $(LIBXPLCLIENT_LT_VERSION_INFO)
 
 # Header files to install

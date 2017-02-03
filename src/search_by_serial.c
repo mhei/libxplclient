@@ -18,7 +18,7 @@
 
 struct sbs_ctx {
 	char *serial;
-	struct sockaddr **addr;
+	struct sockaddr *addr;
 	socklen_t *addrlen;
 	int found;
 };
@@ -64,12 +64,10 @@ static int sbs_cb(void *ctx, const struct sockaddr *address, socklen_t addrlen, 
 
 			/* but only the first found wins - at least for this convinience helper */
 			if (sbs_ctx->found == 1) {
-				*sbs_ctx->addr = malloc(addrlen);
-
-				if (*sbs_ctx->addr) {
-					memcpy(*sbs_ctx->addr, address, addrlen);
+				if (sbs_ctx->addr)
+					memcpy(sbs_ctx->addr, address, addrlen);
+				if (sbs_ctx->addrlen)
 					*sbs_ctx->addrlen = addrlen;
-				}
 			}
 		}
 
@@ -82,7 +80,7 @@ free_out:
 	return 0;
 }
 
-int xplclient_search_by_serial(const char *serial, struct sockaddr **addr, socklen_t *addrlen)
+int xplclient_search_by_serial(const char *serial, struct sockaddr *addr, socklen_t *addrlen)
 {
 	struct sbs_ctx ctx;
 	int rv;
