@@ -131,6 +131,11 @@ void xplclient_free(xplclient_t ctx);
 struct json_object *xplclient_url_get(xplclient_t ctx, const char *path);
 
 /**
+ * FIXME
+ */
+struct json_object *xplclient_url_set(xplclient_t ctx, const char *path, struct json_object *data);
+
+/**
  * Traverse a JSON object hierarchy to access a given key of a JSON object. The path to the
  * desired key is given by a "pathname", that is a list of key names separated by /.
  * (That means that keys cannot include a '/' char by convention - no care is taken about this!)

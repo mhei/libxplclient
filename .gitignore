@@ -29,6 +29,8 @@ doc/*.3
 doc/*.7
 compile
 tools/xpl-list
+tools/xpl-conf-get
+tools/xpl-conf-set
 *.tar.xz
 .project
 .cproject
