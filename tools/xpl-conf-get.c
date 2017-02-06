@@ -50,7 +50,11 @@ int main(int argc, char *argv[])
 		printf("%s\n", json_object_get_string(value));
 		break;
 	default:
+#if JSON_C_MINOR_VERSION > 10
 		printf("%s\n", json_object_to_json_string_ext(value, JSON_C_TO_STRING_PRETTY));
+#else
+		printf("%s\n", json_object_to_json_string(value));
+#endif
 	}
 
 	json_object_put(root);

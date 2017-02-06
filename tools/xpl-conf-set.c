@@ -14,6 +14,8 @@
 #include "xplclient.h"
 #include "config.h"
 
+
+
 int main(int argc, char *argv[])
 {
 	xplclient_t xpl;
@@ -45,7 +47,11 @@ int main(int argc, char *argv[])
 
 		ll = strtoll(argv[i + 1], &endptr, 0);
 		if (*endptr == '\0')
+#if JSON_C_MINOR_VERSION > 10
 			json_object_object_add(data, argv[i], json_object_new_int64(ll));
+#else
+			json_object_object_add(data, argv[i], json_object_new_int(ll));
+#endif
 		else
 			json_object_object_add(data, argv[i], json_object_new_string(argv[i + 1]));
 	}
@@ -72,11 +78,19 @@ int main(int argc, char *argv[])
 			printf("%s\n", json_object_get_string(value));
 			break;
 		default:
+#if JSON_C_MINOR_VERSION > 10
 			printf("%s\n", json_object_to_json_string_ext(value, JSON_C_TO_STRING_PRETTY));
+#else
+			printf("%s\n", json_object_to_json_string(value));
+#endif
 		}
 	} else {
 		/* print whole object */
+#if JSON_C_MINOR_VERSION > 10
 		printf("%s\n", json_object_to_json_string_ext(root, JSON_C_TO_STRING_PRETTY));
+#else
+		printf("%s\n", json_object_to_json_string(root));
+#endif
 	}
 
 	json_object_put(root);
